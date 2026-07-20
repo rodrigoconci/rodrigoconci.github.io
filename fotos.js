@@ -1,0 +1,27 @@
+/* Galeria — para trocar fotos: adicione/remova linhas e coloque o arquivo em fotos/ */
+CONFIG.fotos = [
+  { src: "fotos/056.jpg", alt: "Pais beijando a formanda em preto e branco" },
+  { src: "fotos/133.jpg", alt: "Retrato de formanda à noite" },
+  { src: "fotos/003.jpg", alt: "Ensaio de 15 anos entre flores" },
+  { src: "fotos/095.jpg", alt: "Abraço emocionado de pai e filha na formatura" },
+  { src: "fotos/028.jpg", alt: "Manobra de skate em frente a grafite" },
+  { src: "fotos/109.jpg", alt: "Formanda sorrindo com rosa" },
+  { src: "fotos/038.jpg", alt: "Risada espontânea em ensaio de marca" },
+  { src: "fotos/119.jpg", alt: "Dança da formanda com o pai" },
+  { src: "fotos/245.jpg", alt: "Fotografia gastronômica de pudim" },
+  { src: "fotos/008.jpg", alt: "Ensaio de 15 anos ao ar livre" },
+  { src: "fotos/218.jpg", alt: "Formanda comemorando com óculos Formei" },
+  { src: "fotos/267.jpg", alt: "Fotografia de interiores e mobiliário" },
+  { src: "fotos/130.jpg", alt: "Menina dançando com o pai na festa" },
+  { src: "fotos/210.jpg", alt: "Formanda cantando na festa" },
+  { src: "fotos/304.jpg", alt: "Massa servida em queijo grana padano" },
+  { src: "fotos/149.jpg", alt: "Risada na pista de dança" },
+  { src: "fotos/176.jpg", alt: "Formanda emocionada em preto e branco" },
+  { src: "fotos/266.jpg", alt: "Momento acolhedor com cachorro no sofá" },
+  { src: "fotos/183.jpg", alt: "Abraço de comemoração na formatura" },
+  { src: "fotos/250.jpg", alt: "Fotografia de bebida com morango" },
+  { src: "fotos/199.jpg", alt: "Retrato elegante de formanda" },
+  { src: "fotos/091.jpg", alt: "Pai emocionado enxugando lágrimas" },
+  { src: "fotos/277.jpg", alt: "Criança brincando na piscina de bolinhas" },
+  { src: "fotos/077.jpg", alt: "Abraço da formanda com o avô" }
+];

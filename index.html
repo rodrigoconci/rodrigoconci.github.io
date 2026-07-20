@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodrigo Conci — Fotógrafo em Bento Gonçalves e Serra Gaúcha</title>
+<meta name="description" content="Rodrigo Conci — fotografia e vídeo de casamentos, ensaios, eventos e marcas em Bento Gonçalves e Serra Gaúcha. Momentos reais, contados com emoção.">
+<meta property="og:title" content="Rodrigo Conci — Fotógrafo">
+<meta property="og:description" content="Fotografia e vídeo em Bento Gonçalves e Serra Gaúcha. Momentos reais, contados com emoção.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="fotos/og.jpg">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --bg-soft:#faf9f7;
+    --ink:#1a1a1a; --ink-soft:#555; --ink-mut:#999;
+    --line:#e8e6e2;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Jost','Segoe UI',system-ui,sans-serif;
+    --max:1280px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---------- Nav ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+  nav.scrolled{border-bottom-color:var(--line)}
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:var(--serif);font-size:22px;letter-spacing:2px;text-transform:uppercase}
+  .logo span{color:var(--ink-mut)}
+  .nav-links{display:flex;gap:34px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase}
+  .nav-links a{color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-toggle{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink)}
+
+  /* ---------- Hero ---------- */
+  header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden}
+  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center 30%;filter:brightness(.72)}
+  .hero-content{position:relative;color:#fff;padding:0 24px}
+  .hero-content .kicker{font-size:12px;letter-spacing:5px;text-transform:uppercase;opacity:.85;margin-bottom:18px}
+  .hero-content h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8vw,88px);letter-spacing:6px;text-transform:uppercase;line-height:1.1}
+  .hero-content .tagline{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.6vw,24px);margin-top:20px;opacity:.92}
+  .hero-scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:#fff;font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.75;animation:drift 2.4s ease-in-out infinite}
+  @keyframes drift{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+  /* ---------- Sections ---------- */
+  section{padding:110px 0}
+  .sec-head{text-align:center;margin-bottom:60px}
+  .sec-head .kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--ink-mut);margin-bottom:12px}
+  .sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,44px);letter-spacing:3px;text-transform:uppercase}
+
+  /* ---------- Galeria ---------- */
+  .gallery{columns:3;column-gap:14px}
+  .gallery a{display:block;margin-bottom:14px;break-inside:avoid;overflow:hidden;cursor:zoom-in}
+  .gallery img{transition:transform .6s ease,opacity .6s;opacity:0;transform:translateY(12px)}
+  .gallery img.vis{opacity:1;transform:none}
+  .gallery a:hover img{transform:scale(1.03)}
+
+  /* ---------- Lightbox ---------- */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(10,10,10,.96);display:none;align-items:center;justify-content:center}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:88vh;object-fit:contain}
+  .lb button{position:absolute;background:none;border:none;color:#fff;cursor:pointer;font-size:34px;opacity:.7;transition:opacity .2s;padding:18px}
+  .lb button:hover{opacity:1}
+  .lb .lb-close{top:12px;right:16px}
+  .lb .lb-prev{left:8px;top:50%;transform:translateY(-50%)}
+  .lb .lb-next{right:8px;top:50%;transform:translateY(-50%)}
+
+  /* ---------- Vídeos ---------- */
+  #videos{background:var(--bg-soft)}
+  .videos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+  .video-embed{position:relative;padding-top:56.25%;background:#000}
+  .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* ---------- Depoimentos ---------- */
+  .depo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:40px;max-width:1080px;margin:0 auto}
+  .depo{text-align:center}
+  .depo p{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.75;color:var(--ink-soft)}
+  .depo .who{margin-top:18px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-mut)}
+
+  /* ---------- Sobre ---------- */
+  .sobre-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:center;max-width:1080px;margin:0 auto}
+  .sobre-foto{aspect-ratio:4/5;background-size:cover;background-position:center}
+  .sobre-txt .kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--ink-mut);margin-bottom:12px}
+  .sobre-txt h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4vw,40px);letter-spacing:2px;margin-bottom:24px}
+  .sobre-txt p{color:var(--ink-soft);margin-bottom:16px}
+
+  /* ---------- Contato ---------- */
+  #contato{background:var(--bg-soft);text-align:center}
+  #contato .frase{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3vw,28px);color:var(--ink-soft);max-width:620px;margin:0 auto 40px}
+  .whats{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;padding:18px 42px;font-size:13px;letter-spacing:3px;text-transform:uppercase;transition:background .25s}
+  .whats:hover{background:#000}
+  .whats svg{width:20px;height:20px;fill:currentColor}
+  .social{margin-top:34px;display:flex;justify-content:center;gap:26px}
+  .social a{color:var(--ink-mut);font-size:12px;letter-spacing:2px;text-transform:uppercase;transition:color .2s}
+  .social a:hover{color:var(--ink)}
+
+  footer{padding:36px 24px;text-align:center;border-top:1px solid var(--line);font-size:12px;letter-spacing:1.5px;color:var(--ink-mut)}
+  footer .loc{margin-top:6px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase}
+
+  /* ---------- Mobile ---------- */
+  @media(max-width:900px){
+    .gallery{columns:2}
+    .sobre-grid{grid-template-columns:1fr;gap:40px}
+  }
+  @media(max-width:640px){
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:8px 0}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:14px 24px}
+    .nav-toggle{display:block}
+    section{padding:70px 0}
+    .gallery{columns:2;column-gap:8px}
+    .gallery a{margin-bottom:8px}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">Rodrigo <span>Conci</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#portfolio">Portfólio</a>
+      <a href="#videos" data-need="videos">Vídeos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="hero-img" id="heroImg"></div>
+  <div class="hero-content">
+    <div class="kicker">Fotografia &amp; Vídeo</div>
+    <h1>Rodrigo Conci</h1>
+    <div class="tagline" id="taglineEl"></div>
+  </div>
+  <a href="#portfolio" class="hero-scroll">Explorar ↓</a>
+</header>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Momentos reais</div>
+      <h2>Portfólio</h2>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<section id="videos" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Em movimento</div>
+      <h2>Vídeos</h2>
+    </div>
+    <div class="videos-grid" id="videosGrid"></div>
+  </div>
+</section>
+
+<section id="depoimentos" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Quem viveu, conta</div>
+      <h2>O que eles dizem</h2>
+    </div>
+    <div class="depo-grid" id="depoGrid"></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="sobre-grid">
+      <div class="sobre-foto" id="sobreFoto"></div>
+      <div class="sobre-txt">
+        <div class="kicker">Prazer</div>
+        <h2>Olá, sou o Rodrigo</h2>
+        <div id="bioEl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Vamos conversar?</div>
+      <h2>Contato</h2>
+    </div>
+    <p class="frase">Cada história merece ser bem contada. Me chama e vamos planejar a sua.</p>
+    <a class="whats" id="whatsBtn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4a.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3Z"/></svg>
+      Fale comigo no WhatsApp
+    </a>
+    <div class="social" id="socialLinks"></div>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="ano"></span> Rodrigo Conci — Fotografia &amp; Vídeo</div>
+  <div class="loc">Fotógrafo em Bento Gonçalves · Serra Gaúcha · RS</div>
+</footer>
+
+<div class="lb" id="lb">
+  <button class="lb-close" aria-label="Fechar">×</button>
+  <button class="lb-prev" aria-label="Anterior">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-next" aria-label="Próxima">›</button>
+</div>
+
+<script>
+/* =====================================================
+   CONFIGURAÇÃO — edite só aqui
+   ===================================================== */
+const CONFIG = {
+  // TODO: confirmar número (formato: 55 + DDD + número, só dígitos)
+  whatsapp: "5554999254558",
+  whatsappMsg: "Olá, Rodrigo! Vi seu site e quero saber mais sobre seu trabalho.",
+  instagram: "",             // ex: "rodrigoconci" (sem @) — vazio esconde o link
+  tagline: "Momentos reais, contados com emoção.",
+  bio: [
+    "Sou fotógrafo e videomaker em Bento Gonçalves, na Serra Gaúcha. O que mais me move é a emoção de verdade: o abraço apertado, a lágrima que escapa, a risada no meio da festa.",
+    "Fotografo e filmo casamentos, ensaios, eventos e marcas — sempre buscando contar cada história do jeito que ela merece ser lembrada."
+  ],
+  heroFoto: "fotos/hero.jpg",
+  sobreFoto: "fotos/sobre.jpg",
+  fotos: [],                 // preenchido em fotos.js
+  videos: [],                // ex: ["dQw4w9WgXcQ"] — IDs do YouTube; vazio esconde a seção
+  depoimentos: []            // ex: [{texto:"...", quem:"Ana & João"}] — vazio esconde a seção
+};
+</script>
+<script src="fotos.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+
+/* nav */
+const nav = $('#nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+$('#navToggle').onclick = () => $('#navLinks').classList.toggle('open');
+document.querySelectorAll('#navLinks a').forEach(a => a.onclick = () => $('#navLinks').classList.remove('open'));
+
+/* conteúdo */
+$('#taglineEl').textContent = CONFIG.tagline;
+$('#heroImg').style.backgroundImage = `url('${CONFIG.heroFoto}')`;
+$('#sobreFoto').style.backgroundImage = `url('${CONFIG.sobreFoto}')`;
+$('#bioEl').innerHTML = CONFIG.bio.map(p => `<p>${p}</p>`).join('');
+$('#ano').textContent = new Date().getFullYear();
+$('#whatsBtn').href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
+
+/* social */
+const social = [];
+if (CONFIG.instagram) social.push(`<a href="https://instagram.com/${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a>`);
+$('#socialLinks').innerHTML = social.join('');
+
+/* galeria */
+const gal = $('#gallery');
+gal.innerHTML = CONFIG.fotos.map((f, i) =>
+  `<a href="${f.src}" data-i="${i}"><img src="${f.src}" alt="${f.alt || 'Fotografia de Rodrigo Conci'}" loading="lazy"></a>`).join('');
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+}), { rootMargin: '80px' });
+gal.querySelectorAll('img').forEach(img => io.observe(img));
+
+/* lightbox */
+let cur = 0;
+const lb = $('#lb'), lbImg = $('#lbImg');
+const show = i => { cur = (i + CONFIG.fotos.length) % CONFIG.fotos.length; lbImg.src = CONFIG.fotos[cur].src; };
+gal.onclick = e => { const a = e.target.closest('a'); if (!a) return; e.preventDefault(); show(+a.dataset.i); lb.classList.add('open'); };
+$('.lb-close').onclick = () => lb.classList.remove('open');
+$('.lb-prev').onclick = () => show(cur - 1);
+$('.lb-next').onclick = () => show(cur + 1);
+lb.onclick = e => { if (e.target === lb) lb.classList.remove('open'); };
+addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') lb.classList.remove('open');
+  if (e.key === 'ArrowLeft') show(cur - 1);
+  if (e.key === 'ArrowRight') show(cur + 1);
+});
+let tx = null;
+lb.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+lb.addEventListener('touchend', e => {
+  if (tx === null) return;
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+  tx = null;
+});
+
+/* vídeos */
+if (CONFIG.videos.length) {
+  $('#videos').hidden = false;
+  $('#videosGrid').innerHTML = CONFIG.videos.map(id =>
+    `<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="Vídeo de Rodrigo Conci" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`).join('');
+} else {
+  document.querySelector('[data-need="videos"]').style.display = 'none';
+}
+
+/* depoimentos */
+if (CONFIG.depoimentos.length) {
+  $('#depoimentos').hidden = false;
+  $('#depoGrid').innerHTML = CONFIG.depoimentos.map(d =>
+    `<div class="depo"><p>“${d.texto}”</p><div class="who">${d.quem}</div></div>`).join('');
+}
+</script>
+</body>
+</html>
