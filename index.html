@@ -43,7 +43,9 @@
 
   /* ---------- Hero ---------- */
   header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden}
-  .hero-img{position:absolute;inset:0;background-size:cover;background-position:center 30%;filter:brightness(.72)}
+  .hero-bg{position:absolute;inset:0}
+  .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center 30%;filter:brightness(.72);opacity:0;transition:opacity 1.8s ease}
+  .hero-slide.active{opacity:1}
   .hero-content{position:relative;color:#fff;padding:0 24px}
   .hero-content .kicker{font-size:12px;letter-spacing:5px;text-transform:uppercase;opacity:.85;margin-bottom:18px}
   .hero-content h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8vw,88px);letter-spacing:6px;text-transform:uppercase;line-height:1.1}
@@ -138,7 +140,7 @@
 </nav>
 
 <header>
-  <div class="hero-img" id="heroImg"></div>
+  <div class="hero-bg" id="heroBg"></div>
   <div class="hero-content">
     <div class="kicker">Fotografia &amp; Vídeo</div>
     <h1>Rodrigo Conci</h1>
@@ -230,7 +232,7 @@ const CONFIG = {
     "Sou fotógrafo e videomaker em Bento Gonçalves, na Serra Gaúcha. O que mais me move é a emoção de verdade: o abraço apertado, a lágrima que escapa, a risada no meio da festa.",
     "Fotografo e filmo casamentos, ensaios, eventos e marcas — sempre buscando contar cada história do jeito que ela merece ser lembrada."
   ],
-  heroFoto: "fotos/hero.jpg",
+  heroFotos: ["fotos/hero.jpg", "fotos/091.jpg", "fotos/003.jpg", "fotos/149.jpg", "fotos/267.jpg", "fotos/245.jpg"],
   sobreFoto: "fotos/sobre.jpg",
   fotos: [],                 // preenchido em fotos.js
   videos: [],                // ex: ["dQw4w9WgXcQ"] — IDs do YouTube; vazio esconde a seção
@@ -249,7 +251,18 @@ document.querySelectorAll('#navLinks a').forEach(a => a.onclick = () => $('#navL
 
 /* conteúdo */
 $('#taglineEl').textContent = CONFIG.tagline;
-$('#heroImg').style.backgroundImage = `url('${CONFIG.heroFoto}')`;
+const heroBg = $('#heroBg');
+heroBg.innerHTML = CONFIG.heroFotos.map((f, i) =>
+  `<div class="hero-slide${i === 0 ? ' active' : ''}" style="background-image:url('${f}')"></div>`).join('');
+if (CONFIG.heroFotos.length > 1) {
+  let heroI = 0;
+  const heroSlides = heroBg.querySelectorAll('.hero-slide');
+  setInterval(() => {
+    heroSlides[heroI].classList.remove('active');
+    heroI = (heroI + 1) % heroSlides.length;
+    heroSlides[heroI].classList.add('active');
+  }, 5000);
+}
 $('#sobreFoto').style.backgroundImage = `url('${CONFIG.sobreFoto}')`;
 $('#bioEl').innerHTML = CONFIG.bio.map(p => `<p>${p}</p>`).join('');
 $('#ano').textContent = new Date().getFullYear();
