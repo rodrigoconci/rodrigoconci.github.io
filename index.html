@@ -33,9 +33,9 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
   nav.scrolled{border-bottom-color:var(--line)}
   .nav-inner{max-width:var(--max);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
-  .logo{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:22px;letter-spacing:2px;text-transform:uppercase}
-  .logo img{height:30px;width:auto;display:block}
-  .logo span{color:var(--ink-mut)}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img.mark{height:28px;width:auto;display:block}
+  .logo img.wordmark{height:15px;width:auto;display:block}
   .nav-links{display:flex;gap:34px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase}
   .nav-links a{color:var(--ink-soft);transition:color .2s}
   .nav-links a:hover{color:var(--ink)}
@@ -129,7 +129,7 @@
 
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#" class="logo"><img src="fotos/mark.png" alt="">Rodrigo <span>Conci</span></a>
+    <a href="#" class="logo"><img class="mark" src="fotos/mark.png" alt=""><img class="wordmark" src="fotos/wordmark-black.png" alt="Rodrigo Conci"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="#portfolio">Portfólio</a>
